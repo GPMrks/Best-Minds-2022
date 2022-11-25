@@ -27,6 +27,7 @@ public class WebSecurityConfig {
         http.cors().and().csrf().disable()
                 .authorizeRequests()
                 .antMatchers("/auth/**").permitAll()
+                .antMatchers("/users").permitAll()
                 .antMatchers("/swagger-ui/**").permitAll()
                 .antMatchers("/swagger-resources/**").permitAll()
                 .antMatchers("/webjars/**").permitAll()
@@ -49,5 +50,4 @@ public class WebSecurityConfig {
 
         return http.build();
     }
-
 }

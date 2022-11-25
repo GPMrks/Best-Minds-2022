@@ -4,6 +4,7 @@ import BestMinds2022.OliveiraTrade.model.Login;
 import BestMinds2022.OliveiraTrade.model.Session;
 import BestMinds2022.OliveiraTrade.model.UserFA;
 import BestMinds2022.OliveiraTrade.service.UserService;
+import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -14,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/auth")
-@Tag(name = "Login Controller")
+@Tag(name = "User Login Controller")
 public class LoginController {
 
     @Autowired
@@ -24,6 +25,7 @@ public class LoginController {
     private UserService userService;
 
     @PostMapping("/login")
+    @Operation(summary = "Login", description = "Login de Usuário")
     public Session login(@RequestBody Login login) {
         UserFA user = userService.findByUsername(login.getUsername());
         if (user != null) {
